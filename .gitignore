@@ -1,3 +1,7 @@
+# Ignoring .csv
+*.csv
+
+
 # Dependencies
 .psci_modules
 .spago
