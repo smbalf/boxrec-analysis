@@ -16,6 +16,8 @@ df.insert(3, 'div index', '')
 
 div_list = ['heavy', 'cruiser', 'lightheavy', 'supermiddle', 'middle', 'superwelter', 'welter', 'superlight', 'light', 'feather', 'superbantam', 'bantam', 'superfly', 'fly', 'lightfly', 'minimum']
 
+# Sort for heaviest weight to lightest weight (heavy > minimum)
+# Sorting by 'division' won't work as values are strings
 x = 0
 for value in df['division']:
     df.at[x, 'div index'] = div_list.index(value)
@@ -32,4 +34,10 @@ for col in cols_to_convert:
 average_by_division = ds.groupby(['division']).mean(numeric_only=True)
 
 average_everything_numeric = ds.mean(numeric_only=True)
+
+def replace_with_mean(column):
+    pass
+
+print(average_by_division['age'])
+
 
