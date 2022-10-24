@@ -41,4 +41,6 @@ def replace_nan_with_mean(column, grouping_column):
 replace_nan_with_mean('age', 'division')
 replace_nan_with_mean('height', 'division')
 
-print(ds.age)
+# print(ds.groupby('division')[''].apply(lambda x: x.diff().mean()).reset_index())
+diff_reach = ds.groupby('division')
+print(diff_reach.reach.diff())
