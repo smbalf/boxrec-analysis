@@ -35,9 +35,10 @@ average_by_division = ds.groupby(['division']).mean(numeric_only=True)
 
 average_everything_numeric = ds.mean(numeric_only=True)
 
-def replace_with_mean(column):
-    pass
+def replace_nan_with_mean(column, grouping_column):
+    ds[column] = ds.groupby(grouping_column)[column].transform(lambda x: x.fillna(x.mean()))
 
-print(average_by_division['age'])
+replace_nan_with_mean('age', 'division')
+replace_nan_with_mean('height', 'division')
 
-
+print(ds.age)
