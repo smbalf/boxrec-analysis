@@ -42,5 +42,14 @@ replace_nan_with_mean('age', 'division')
 replace_nan_with_mean('height', 'division')
 
 # print(ds.groupby('division')[''].apply(lambda x: x.diff().mean()).reset_index())
-diff_reach = ds.groupby('division')
-print(diff_reach.reach.diff())
+diff_reach = ds['reach'].diff()
+
+ds.insert(12, 'diff reach', 0.0)
+
+# add diff reach column and values
+# work out mean diff reach for division
+# replace nan values with mean diff reach for division
+
+# print(ds.dtypes)
+print(diff_reach)
+
