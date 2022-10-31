@@ -45,9 +45,8 @@ def replace_nan_with_mean(column, grouping_column):
 replace_nan_with_mean('age', 'division')
 replace_nan_with_mean('height', 'division')
 
-diff_reach = ds['reach'].diff()
+diff_reach = ds.reach - ds.height
+
 ds.insert(12, 'diff reach', diff_reach)
 
 replace_nan_with_mean('diff reach', 'division')
-
-print(ds.head(10))
