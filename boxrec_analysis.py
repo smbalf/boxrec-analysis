@@ -50,3 +50,5 @@ diff_reach = ds.reach - ds.height
 ds.insert(12, 'diff reach', diff_reach)
 
 replace_nan_with_mean('diff reach', 'division')
+
+ds.reach = ds.height + ds['diff reach']
