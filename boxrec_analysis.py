@@ -36,20 +36,18 @@ average_by_division = ds.groupby(['division']).mean(numeric_only=True)
 average_everything_numeric = ds.mean(numeric_only=True)
 
 def replace_nan_with_mean(column, grouping_column):
+    """
+    replaces nan values with the mean value of a given column.
+    using to replace age/height values based off respective division mean.
+    """
     ds[column] = ds.groupby(grouping_column)[column].transform(lambda x: x.fillna(x.mean()))
 
 replace_nan_with_mean('age', 'division')
 replace_nan_with_mean('height', 'division')
 
-# print(ds.groupby('division')[''].apply(lambda x: x.diff().mean()).reset_index())
 diff_reach = ds['reach'].diff()
+ds.insert(12, 'diff reach', diff_reach)
 
-ds.insert(12, 'diff reach', 0.0)
+replace_nan_with_mean('diff reach', 'division')
 
-# add diff reach column and values
-# work out mean diff reach for division
-# replace nan values with mean diff reach for division
-
-# print(ds.dtypes)
-print(diff_reach)
-
+print(ds.head(10))
