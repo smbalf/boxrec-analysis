@@ -10,6 +10,11 @@ def view_top_20(dataframe):
 boxrec_data = pd.read_csv('boxrec_tables.csv')
 df = pd.DataFrame(boxrec_data)
 
+bout_data = pd.read_csv('bout_data.csv',index_col=[0,1])
+second_df = pd.DataFrame(bout_data)
+
+print(second_df)
+
 df.replace(to_replace='None', value=np.nan, regex=True, inplace=True)
 
 df.insert(3, 'div index', '')
@@ -52,3 +57,4 @@ ds.insert(12, 'diff reach', diff_reach)
 replace_nan_with_mean('diff reach', 'division')
 
 ds.reach = ds.height + ds['diff reach']
+
