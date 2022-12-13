@@ -31,9 +31,13 @@ cols_to_convert = ['age', 'height', 'reach']
 for col in cols_to_convert:
     ds[col] = ds[col].astype(float)
 
+
+print(ds)
+
 average_by_division = ds.groupby(['division']).mean(numeric_only=True)
 
 average_everything_numeric = ds.mean(numeric_only=True)
+
 
 def replace_nan_with_mean(column, grouping_column):
     """
